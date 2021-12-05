@@ -11,7 +11,6 @@ class SQLighter:
             return self.cursor.execute("SELECT * FROM `subscriptions` WHERE `status` = ?", (status,)).fetchall()
 
     def subscriber_exists(self, user_id):
-        """Проверяем, есть ли уже юзер в базе"""
         with self.connection:
             result = self.cursor.execute('SELECT * FROM `subscriptions` WHERE `user_id` = ?', (user_id,)).fetchall()
             return bool(len(result))
